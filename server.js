@@ -1,3 +1,4 @@
+var port = process.env.PORT || 443;
 var express = require('express');
 var https = require('https');
 var decodejwt = require('./decodejwt.js');
@@ -128,4 +129,4 @@ app.get('/catchcode', function(request, response) {
 	}
 });
 
-app.listen(443);
+app.listen(port);
