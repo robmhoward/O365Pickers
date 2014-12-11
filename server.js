@@ -38,33 +38,6 @@ app.get('/', function(request, response) {
 	response.end();
 });
 
-app.get('/getGroups', function(request, response) {
-	var responseObject = {
-	  "odata.metadata": "https://graph.ppe.windows.net/microsoft.com/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.Group",
-	  "value": [
-	    {
-	      "odata.type": "Microsoft.WindowsAzure.ActiveDirectory.Group",
-	      "objectType": "Group",
-	      "objectId": "1081e864-0bf7-4cc7-b111-9fc2bd744304",
-	      "description": "Group for members of the ASG REST API Forum to discuss REST API design issues, solicit and provide API design feedback, and track upcoming API council issues.",
-	      "dirSyncEnabled": null,
-	      "displayName": "ASG REST API Forum",
-	      "lastDirSyncTime": null,
-	      "mail": "asgrestapiforum@MSFT.ccsctp.net",
-	      "mailNickname": "asgrestapiforum",
-	      "mailEnabled": true,
-	      "provisioningErrors": [],
-	      "proxyAddresses": [
-	        "SMTP:asgrestapiforum@MSFT.ccsctp.net"
-	      ],
-	      "securityEnabled": false
-	    }
-	  ]
-	};
-	response.send(responseObject);
-	response.end()
-});
-
 app.get('/groupChoices', function(request, response) {
 	var currentUser = tokenCache[request.cookies.currentUser.oid];
 	if (currentUser && currentUser.accessToken) {
@@ -155,4 +128,4 @@ app.get('/catchcode', function(request, response) {
 	}
 });
 
-app.listen(8081);
+app.listen(80);
