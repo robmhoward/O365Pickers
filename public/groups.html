@@ -28,6 +28,8 @@ $(function() {
 		dataType: "json"
 	});
 
+	addTextHint(document.getElementById('searchBox'),'search');
+
 });
 
 function createChoiceFromRow(row) {
@@ -45,7 +47,7 @@ function createChoiceFromRow(row) {
 		<div class="header">
 	    	<h1 class="headerTitle">Groups</h1>
 	    	<div class="searchContainer">
-	    		<input id="searchBox" type="text" value="search here" />
+	    		<input id="searchBox" type="text"/>
 	    		<button onclick="runSearch()" onsubmit="alert('onsubmit')" onkeypress="alert('onkeypress')">search</button>
 	    	</div>
 	    </div>
