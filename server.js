@@ -26,11 +26,12 @@ app.use(cookieParser());
 app.get('/', function(request, response) {
 	var user = request.cookies.currentUser;
 	if (user && user.oid && tokenCache[user.oid]) {
-		response.writeHead(200, {"Content-Type": "text/plain"});
-		response.write("Hello " + user.given_name + " " + user.family_name + "!");
-		response.write("OID: " + user.oid);
+		//response.writeHead(200, {"Content-Type": "text/plain"});
+		//response.write("Hello " + user.given_name + " " + user.family_name + "!");
+		//response.write("OID: " + user.oid);
 		if (tokenCache[user.oid]) {
-			response.write("Access Token: " + tokenCache[user.oid].accessToken);	
+			//response.write("Access Token: " + tokenCache[user.oid].accessToken);	
+			response.writeHead(302, {"Location": "pickedItem.html"});
 		}
 	} else {
 		var fullUrl = request.protocol + '://' + request.get('host') + '/catchcode';
