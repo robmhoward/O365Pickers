@@ -31,7 +31,7 @@ function runSearch() {
 	if (isSearched) {
 		createChoicesFromRows();
 	}
-	viewModel.choices.remove(function(item) { return item.title.indexOf(searchBox.value) < 0 });
+	viewModel.choices.remove(function(item) { return item.title.toLowerCase().indexOf(searchBox.value.toLowerCase()) < 0 });
 	isSearched = true;
 }
 
