@@ -1,0 +1,69 @@
+<html>
+<head>
+
+<title>Group Picker</title>
+
+<link href="picker.css" rel="Stylesheet" type="text/css"/>
+
+<script type='text/javascript' src="http://knockoutjs.com/downloads/knockout-3.2.0.js"></script>
+<script type='text/javascript' src="http://code.jquery.com/jquery-git2.js"> </script>
+<script type='text/javascript' src="picker.js"> </script>
+
+<script type="text/javascript">
+
+$(function() {
+
+	$.ajax("groupChoices", {
+		success: function(data) {
+			rows = data.value;
+			for (var i = 0; i < rows.length; i++) {
+				if (rows[i].objectType != "Group" || !rows[i].mailEnabled || rows[i].securityEnabled) {
+					rows.splice(i, 1);
+				}
+			}
+			createChoicesFromRows();
+			ko.applyBindings(viewModel);
+			document.getElementById('progressCircle').style.display = 'none';
+		},
+		dataType: "json"
+	});
+
+});
+
+function createChoiceFromRow(row) {
+	return new Choice(row.displayName, row.mail, row.description, "");
+}
+
+</script>
+
+</head>
+
+<body>
+
+	<div class="contentContainer"> 
+
+		<div class="header">
+	    	<h1 class="headerTitle">Groups</h1>
+	    	<div class="searchContainer">
+	    		<input id="searchBox" type="text" value="search here" />
+	    		<button onclick="runSearch()" onsubmit="alert('onsubmit')" onkeypress="alert('onkeypress')">search</button>
+	    	</div>
+	    </div>
+
+	    <div class="choicesContainer" data-bind="foreach: choices">
+
+
+	        <div class="choice" data-bind="attr: { onclick: onclick }">
+	        	<div class="choiceLogoContainer"><img class="choiceLogo" data-bind="attr: { src: logo }"/></div>
+	        	<div class="choiceTextContainer">
+	        		<h4 class="choiceText" data-bind="text: title"> </h4>
+	                <h6 class="choiceText" data-bind="text: url"> </h6> 
+	                <p class="choiceText" data-bind="text: description"> </p>
+	        	</div>
+	        </div>
+	    </div>
+	    <img id="progressCircle" src="progress.gif"/>
+    </div>
+</body>
+
+</html>

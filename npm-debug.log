@@ -1,0 +1,89 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'cookie-parse' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 warn package.json O365Pickers@1.0.0 No README data
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'cookie-parse', null ]
+8 verbose cache add name=undefined spec="cookie-parse" args=["cookie-parse",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'cookie-parse',
+9 verbose parsed url   path: 'cookie-parse',
+9 verbose parsed url   href: 'cookie-parse' }
+10 silly lockFile bffb95b1-cookie-parse cookie-parse
+11 verbose lock cookie-parse C:\Users\rhoward\AppData\Roaming\npm-cache\bffb95b1-cookie-parse.lock
+12 silly lockFile bffb95b1-cookie-parse cookie-parse
+13 silly lockFile bffb95b1-cookie-parse cookie-parse
+14 verbose addNamed [ 'cookie-parse', '' ]
+15 verbose addNamed [ null, '*' ]
+16 silly lockFile 4b157faa-cookie-parse cookie-parse@
+17 verbose lock cookie-parse@ C:\Users\rhoward\AppData\Roaming\npm-cache\4b157faa-cookie-parse.lock
+18 silly addNameRange { name: 'cookie-parse', range: '*', hasData: false }
+19 verbose request where is /cookie-parse
+20 verbose request registry https://registry.npmjs.org/
+21 verbose request id 0e7e019d183026c7
+22 verbose url raw /cookie-parse
+23 verbose url resolving [ 'https://registry.npmjs.org/', './cookie-parse' ]
+24 verbose url resolved https://registry.npmjs.org/cookie-parse
+25 verbose request where is https://registry.npmjs.org/cookie-parse
+26 info trying registry request attempt 1 at 07:44:57
+27 http GET https://registry.npmjs.org/cookie-parse
+28 http 404 https://registry.npmjs.org/cookie-parse
+29 verbose headers { date: 'Thu, 11 Dec 2014 15:44:57 GMT',
+29 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+29 verbose headers   'content-type': 'application/json',
+29 verbose headers   'cache-control': 'max-age=0',
+29 verbose headers   'content-length': '52',
+29 verbose headers   'accept-ranges': 'bytes',
+29 verbose headers   via: '1.1 varnish',
+29 verbose headers   age: '0',
+29 verbose headers   'x-served-by': 'cache-lax1428-LAX',
+29 verbose headers   'x-cache': 'MISS',
+29 verbose headers   'x-cache-hits': '0',
+29 verbose headers   'x-timer': 'S1418312697.704800,VS0,VE177',
+29 verbose headers   'keep-alive': 'timeout=10, max=50',
+29 verbose headers   connection: 'Keep-Alive' }
+30 silly registry.get cb [ 404,
+30 silly registry.get   { date: 'Thu, 11 Dec 2014 15:44:57 GMT',
+30 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+30 silly registry.get     'content-type': 'application/json',
+30 silly registry.get     'cache-control': 'max-age=0',
+30 silly registry.get     'content-length': '52',
+30 silly registry.get     'accept-ranges': 'bytes',
+30 silly registry.get     via: '1.1 varnish',
+30 silly registry.get     age: '0',
+30 silly registry.get     'x-served-by': 'cache-lax1428-LAX',
+30 silly registry.get     'x-cache': 'MISS',
+30 silly registry.get     'x-cache-hits': '0',
+30 silly registry.get     'x-timer': 'S1418312697.704800,VS0,VE177',
+30 silly registry.get     'keep-alive': 'timeout=10, max=50',
+30 silly registry.get     connection: 'Keep-Alive' } ]
+31 silly lockFile 4b157faa-cookie-parse cookie-parse@
+32 silly lockFile 4b157faa-cookie-parse cookie-parse@
+33 error 404 404 Not Found: cookie-parse
+33 error 404
+33 error 404 'cookie-parse' is not in the npm registry.
+33 error 404 You should bug the author to publish it
+33 error 404 It was specified as a dependency of 'O365Pickers'
+33 error 404
+33 error 404 Note that you can also install from a
+33 error 404 tarball, folder, or http url, or git url.
+34 error System Windows_NT 6.2.9200
+35 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "cookie-parse"
+36 error cwd C:\Users\rhoward\source\gitprojects\O365Pickers
+37 error node -v v0.10.33
+38 error npm -v 1.4.28
+39 error code E404
+40 verbose exit [ 1, true ]

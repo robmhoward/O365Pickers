@@ -1,0 +1,80 @@
+<html>
+<head>
+
+<title>Site Picker</title>
+
+<link href="picker.css" rel="Stylesheet" type="text/css"/>
+
+<script type='text/javascript' src="http://knockoutjs.com/downloads/knockout-3.2.0.js"></script>
+<script type='text/javascript' src="http://code.jquery.com/jquery-git2.js"> </script>
+<script type='text/javascript' src="picker.js"> </script>
+
+<script type="text/javascript">
+
+$(function() {
+
+	$.ajax("/siteChoices", {
+		success: function(data) {
+			rows = data.PrimaryQueryResult.RelevantResults.Table.Rows;
+			createChoicesFromRows();
+			ko.applyBindings(viewModel);
+			document.getElementById('progressCircle').style.display = 'none';
+		},
+		dataType: "json"
+	});
+
+});
+
+function createChoiceFromRow(row) {
+	var title, description, url, logo;
+	for (var i = 0; i < row.Cells.length; i++) {
+		switch (row.Cells[i].Key) {
+			case "Title":
+				title = row.Cells[i].Value;
+				break;
+			case "Path":
+				url = row.Cells[i].Value;
+				break;
+			case "SiteLogo":
+				logo = row.Cells[i].Value;
+				break;
+			case "SiteDescription":
+				description = row.Cells[i].Value;
+				break;
+			default:
+				break;
+		}
+	}
+	return new Choice(title, url, description, logo);
+}
+
+</script>
+
+</head>
+
+<body>
+	<div class="contentContainer"> 
+
+		<div class="header">
+	    	<h1 class="headerTitle">Sites</h1>
+	    	<div class="searchContainer">
+	    		<input type="text" value="search here" />
+	    	</div>
+	    </div>
+
+	    <div class="choicesContainer" data-bind="foreach: choices">
+	        <div class="choice" data-bind="attr: { onclick: onclick }">
+	        	<div class="choiceLogoContainer"><img class="choiceLogo" data-bind="attr: { src: logo }"/></div>
+	        	<div class="choiceTextContainer">
+	        		<h4 class="choiceText" data-bind="text: title"> </h4>
+	                <h6 class="choiceText" data-bind="text: url"> </h6> 
+	                <p class="choiceText" data-bind="text: description"> </p>
+	        	</div>
+	        </div>
+	    </div>
+	    <img id="progressCircle" src="progress.gif"/>
+    </div>
+    
+</body>
+
+</html>
