@@ -113,8 +113,8 @@ app.get('/siteChoices', function(request, response) {
 
 
 app.get('/catchcode', function(request, response) {
-	var fullUrl = request.protocol + '://' + request.get('host') + request.path;
-	//var fullUrl = 'https://' + request.get('host') + request.path;
+	//var fullUrl = request.protocol + '://' + request.get('host') + request.path;
+	var fullUrl = 'https://' + request.get('host') + request.path;
 	if (!request.query.code) {
 		response.writeHead(302, {"Location": "https://" + login_host + "/common/oauth2/authorize?client_id=" + client_id + "&response_type=code&redirect_uri=" + fullUrl});
 		response.end();
