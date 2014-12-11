@@ -2,7 +2,7 @@
   "name": "O365Pickers",
   "version": "1.0.0",
   "description": "Web app that allows other web and device apps to pick objects from o365",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.10.4"
   },
