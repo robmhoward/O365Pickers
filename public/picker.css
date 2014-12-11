@@ -81,3 +81,5 @@ p.choiceText {
 	font-size: x-small;
 }
 
+input.ghost { color: #CCC; }
+input.normal { color: #OOO; }

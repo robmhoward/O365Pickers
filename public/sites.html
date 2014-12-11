@@ -11,9 +11,12 @@
 
 <script type="text/javascript">
 
-$(function() {
-
-	$.ajax("/siteChoices", {
+function executeQuery(searchTerm) {
+	var path = "/siteChoices";
+	if (searchTerm) {
+		path += "?querytext=" + searchTerm;
+	}
+	$.ajax(path, {
 		success: function(data) {
 			rows = data.PrimaryQueryResult.RelevantResults.Table.Rows;
 			createChoicesFromRows();
@@ -23,6 +26,11 @@ $(function() {
 		dataType: "json"
 	});
 
+	addTextHint(document.getElementById('searchBox'),'search');
+}
+
+$(function() {
+	executeQuery();music
 });
 
 function createChoiceFromRow(row) {
@@ -58,7 +66,8 @@ function createChoiceFromRow(row) {
 		<div class="header">
 	    	<h1 class="headerTitle">Sites</h1>
 	    	<div class="searchContainer">
-	    		<input type="text" value="search here" />
+	    		<input id="searchBox" type="text" />
+	    		<button onclick="executeQuery(document.getElementById('searchBox').value)">search</button>
 	    	</div>
 	    </div>
 
@@ -74,7 +83,7 @@ function createChoiceFromRow(row) {
 	    </div>
 	    <img id="progressCircle" src="progress.gif"/>
     </div>
-    
+
 </body>
 
 </html>

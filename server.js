@@ -74,13 +74,17 @@ app.get('/groupChoices', function(request, response) {
 app.get('/siteChoices', function(request, response) {
 	var search_host = 'msft-my.spoppe.com';
 	var currentUser = tokenCache[request.cookies.currentUser.oid];
+	var querytext = "contentclass:STS_Site";
+	if (request.query.querytext) {
+		querytext = request.query.querytext + "%20AND%20contentclass:STS_Site";
+	}
 	getAccessToken.getTokenResponseWithRefreshToken("https://" + search_host + "/", client_id, client_secret, currentUser.refreshToken, "", function(error, tokenResponseData) {
 		if (!error) {
 			var siteResponseData = "";
 			var siteRequest = https.request({
 				hostname: search_host,
 				port: 443,
-				path: "/_api/search/query?querytext='contentclass:STS_Site'",
+				path: "/_api/search/query?querytext='" + querytext + "'",
 				method: 'GET',
 				headers: {
 					'Accept': 'application/json',
@@ -109,8 +113,8 @@ app.get('/siteChoices', function(request, response) {
 
 
 app.get('/catchcode', function(request, response) {
-	//var fullUrl = request.protocol + '://' + request.get('host') + request.path;
-	var fullUrl = 'https://' + request.get('host') + request.path;
+	var fullUrl = request.protocol + '://' + request.get('host') + request.path;
+	//var fullUrl = 'https://' + request.get('host') + request.path;
 	if (!request.query.code) {
 		response.writeHead(302, {"Location": "https://" + login_host + "/common/oauth2/authorize?client_id=" + client_id + "&response_type=code&redirect_uri=" + fullUrl});
 		response.end();
